@@ -18,28 +18,115 @@ nav {
     justify-content: space-between;
     z-index: 1;
 }
-main {    
-    margin:55px 8% 0 5%;  
-    padding-top: 25px;
-    height: min-content; 
-    width: 87%;
-    background-color: aqua;
+
+/*
+.wrapper {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 10fr 78fr 12fr;
+    grid-template-rows: 1fr;
+    background-color: rgb(201, 4, 4);
+}
+main { 
+    grid-area: 1 /2 / 2 / 2 ;  
+    display: grid;
+    grid-template-columns: 65fr minmax(200px, 400px);
+    grid-template-rows: 1fr;
+    
+}
+*/
+.wrapper {
+    margin-top: 80px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: center;
+}
+main { 
+    width: 1045px;
+    display: grid;
+    grid-template-columns: 68fr minmax(200px, 400px);
+    grid-template-rows: 1fr;  
 }
 
-.left-column {    
-    
-    width: 63%;
-    float: left;
+@media (max-aspect-ratio: 5/2) {
+    main { 
+        width: 84%;   
+        display: grid;
+        grid-template-columns: 70fr minmax(200px, 400px);
+        grid-template-rows: 1fr;    
+    }
 }
-.right-column {   
-    
-    width: 35%;
-    float: right;
+@media (max-aspect-ratio: 5/2) and (max-width: 1260px) {
+    main { 
+        width: 1050px;   
+        display: grid;
+        grid-template-columns: 70fr minmax(200px, 400px);
+        grid-template-rows: 1fr;      
+    }
+
 }
+@media (max-aspect-ratio: 7/3) {
+    main { 
+        width: 87%; 
+        display: grid;
+        grid-template-columns: 72fr minmax(200px, 400px);
+        grid-template-rows: 1fr;       
+    }
+}
+@media (max-aspect-ratio: 20/9) {
+    main { 
+        width: 96%;    
+        display: grid;
+        grid-template-columns: 72fr minmax(200px, 400px);
+        grid-template-rows: 1fr; 
+    }
+}
+@media (max-aspect-ratio: 20/9) and (min-width:1800px){
+    main { 
+        width: 1680px;    
+        display: grid;
+        grid-template-columns: 72fr minmax(200px, 400px);
+        grid-template-rows: 1fr; 
+    }    
+}
+main {
+    grid-template-areas: "left-column-top    proposals"
+                         "left-column-bottom proposals";
+                         
+}
+@media (max-width: 1200px) {
+    main {
+        grid-template-columns: 72fr minmax(200px, 350px);
+    }
+    
+}
+@media (max-width: 950px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: min-content min-content min-content;       
+        grid-template-areas: "left-column-top"
+                             "proposals"
+                            "left-column-bottom";
+    }
+}
+.left-column-top {
+    grid-area: left-column-top;    
+}
+.left-column-bottom {
+    grid-area: left-column-bottom;
+}
+.proposals {
+    margin-left: 25px;    
+    grid-area: proposals;
+}
+
 /*common elements styles*/
 
 .light-icon {
-    color: rgba(0, 0, 0, 0.54);
+    color: rgba(0, 0, 0, 0.40);
+}
+.dark-icon {
+    color: rgba(0, 0, 0, 0.60)
 }
 .big-thumb {
     font-size: 20px;
@@ -237,14 +324,15 @@ main {
     display: flex;    
     justify-content: space-between;
     margin-bottom: 10px;
-    color: rgba(0, 0, 0, 0.6);
+    
 }
-.next-header p {
+.autoplay p {
     font-weight: bolder;
 }
 .autoplay {
     font-size: 0.8rem;
     display: flex;
+    color: rgba(0, 0, 0, 0.6);
 }
 .switch input{
     opacity: 0;
@@ -337,11 +425,15 @@ input:checked + .slider::before {
 .search-box {
     margin-left: 2rem;
     margin-right: 2rem;
-    width: 50%;
+    width: 45%;
     height: 2rem;
-    border: solid 1px #DDD;
-    
+    border: solid 1px #DDD;  
     display: flex;
+}
+@media (min-width: 1445px){
+    .search-box {
+        width: 650px;
+    }
 }
 .search-text-box {
     display: flex;    
@@ -357,8 +449,8 @@ input:checked + .slider::before {
 .search-text:focus {   
     outline: none;
 }
-.search-text-box:focus-within {
-    outline: solid 1px blue;
+.search-text-box:focus-within {    
+    border: solid 1px rgb(133, 133, 250);
 }
 .search-icon {    
     width: 60px;
@@ -384,18 +476,12 @@ input:checked + .slider::before {
     height: 32px;
     border-radius: 50%;
     border-style: solid;
-    border-color: black;
+    border-color:  rgb(92, 64, 54);
     border-width: 2px;
-    background-color: black;
+    background-color: rgb(92, 64, 54);
     color: white;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
     padding: 4px;
-}
-/* clearfix*/
-.footer:before {
-    content: "";
-    display: table;
-    clear: both;
 }
